@@ -1,0 +1,38 @@
+{namespace talkSocket.ui.templates}
+/***
+* Channel selection template
+* @param id Channel ID
+* @param name Channel name
+*/
+{template .channelSelect}
+  <li id="channel_select_{$id|noAutoescape}" class="channel-select" data-channel="{$id|noAutoescape}">{$name}</li>
+{/template}
+/***
+* Chat Channel template
+* @param id Channel ID
+*/
+{template .channel}
+  <div class="channel" id="channel_{$id|noAutoescape}" data-channel="{$id|noAutoescape}">
+    <ul id="channel_{$id|noAutoescape}_messages" class="messages bordered"></ul>
+    <ul id="channel_{$id|noAutoescape}_users" class="users bordered"></ul>
+    <input id="channel_{$id|noAutoescape}_msg_box"  class="msg-box bordered" type="text" placeholder="Join the conversation"></input>
+  </div>
+{/template}
+/***
+* Chat message template
+* @param id Message ID
+* @param short_time Message Timestamp
+* @param long_time Message Timestamp
+* @param body Text of message
+* @param sender Message sender
+*/
+{template .message}
+  <li id="message_{$id|noAutoescape}"><span class="timestamp" title="{$long_time|noAutoescape}">{$short_time|noAutoescape}</span><span class="author" data-user="{$sender.id|noAutoescape}">{$sender.nickname}</span><span class="message">{$body}</span></li>
+{/template}
+/***
+* User template
+* @param user User
+*/
+{template .user}
+  <li data-user="{$user.id|noAutoescape}" class="user" name="user_{$user.id|noAutoescape}"><span class="nickname">{$user.nickname}</span></li>
+{/template}
